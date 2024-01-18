@@ -17,16 +17,14 @@ const applyTheme = () => {
   document.body.setAttribute('data-theme', theme);
 };
 
-const onClick = () => {
-  theme = theme === 'light' ? 'dark' : 'light';
-  saveThemePreference();
-  applyTheme();
-};
-
 export function themeInit() {
   applyTheme(theme);
   // set on load so screen readers can get the latest value on the button
-  document.querySelector('#theme-switch').addEventListener('click', onClick);
+  document.querySelector('#theme-switch').addEventListener('click', () => {
+    theme = theme === 'light' ? 'dark' : 'light';
+    saveThemePreference();
+    applyTheme();
+  });
 }
 
 window

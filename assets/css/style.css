@@ -44,6 +44,6 @@
 }
 
 #root {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
