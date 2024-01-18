@@ -10,11 +10,25 @@ export function fetchData(url) {
 
 /**
  *
+ * @param {function} fn
+ * @returns function
+ */
+export function cache(fn) {
+  let map = new Map();
+  return (...args) => {
+    console.log(map);
+    const index = JSON.stringify(args);
+    if (!map.has(index)) map.set(index, fn(...args));
+    return map.get(index);
+  };
+}
+
+/**
+ *
  * @param {InnerHTML} template
  * @param {HTMLElement} el
  */
 export function render(template, el) {
-  console.log({ template, el });
   if (!el) throw new Error('no root node provided');
   el.innerHTML = template;
 }
